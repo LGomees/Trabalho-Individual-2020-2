@@ -1,7 +1,7 @@
 language: python
 
 python:
- - 3.8 
+ - 3.6 
 
 services: 
  - docker 
@@ -17,14 +17,13 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
 
-jobs:
-  include:
-    - stage: build
-      - docker-compose up -d --build 
-    - stage: test
-      script:
-      - docker-compose run client yarn quasar test --unit jest
-      - docker-compose run api ./test_api.sh
+# jobs:
+#   include:
+#     - stage: build
+#       - docker-compose up -d --build 
+#     - stage: test
+#       script:
+
 
 after_success: 
  - docker-compose down
