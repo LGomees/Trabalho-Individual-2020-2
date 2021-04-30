@@ -1,0 +1,38 @@
+version: "3.8"
+services: 
+    db: 
+        image: postgres:13
+        container_name: postgres-container
+        restart: always
+        environment:
+            POSTGRES_DB: myproject
+            POSTGRES_USER: myuser
+            POSTGRES_PASSWORD: password
+        volumes: 
+            - postgres_data:/var/lib/postgresql/data/
+
+    api:
+        build: ./api/
+        container_name: api-container
+        restart: always
+        volumes: 
+            - ./api:/api
+        ports:
+            - "8000:8000"
+        depends_on: 
+            - db
+        command: bash -c "wget -qO- https://raw.githubusercontent.com/eficode/wait-for/v2.1.1/wait-for | sh -s -- db:5432 -- echo Success && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+
+    client:
+        build: ./client/
+        container_name: client-container
+        restart: always
+        volumes: 
+            - ./client:/client
+        ports: 
+            - "8080:8080"
+        command: /bin/sh -c "yarn && quasar dev"
+
+
+volumes:
+    postgres_data:
