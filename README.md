@@ -1,5 +1,6 @@
 # Trabalho Individual 2020.2
 
+[![Build Status](https://travis-ci.com/LGomees/Trabalho-Individual-2020-2.svg?branch=master)](https://travis-ci.com/LGomees/Trabalho-Individual-2020-2)
 
 A Gestão de Configuração de Software é parte fundamental no curso de GCES, e dominar os conhecimentos de configuração de ambiente, containerização, virtualização, integração e deploy contínuo tem se tornado cada vez mais necessário para ingressar no mercado de trabalho.
 

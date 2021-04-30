@@ -1,10 +1,28 @@
 language: python
+
 python:
-  – "3.5" #versão do python
+- 3.8 
+
+services: 
+ - docker 
+
+sudo: required
+
 env:
-  – SECRET_KEY=TopSecretKey DEBUG=True ALLOWED_HOSTS=127.0.0.1 #Configuração das variáveis de ambiente
-install:
-  – pip install -r requirements.txt
-script: #comandos a serem executados para realizar o teste
-  – python manage.py check 
-  – python manage.py test
+  - DOCKER_COMPOSE_VERSION=1.4.2
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+jobs:
+  include:
+    - stage: build
+      - docker-compose up -d --build 
+    - stage: test
+      script:
+      - docker-compose run client yarn quasar test --unit jest
+      - docker-compose run api ./test_api.sh
+
