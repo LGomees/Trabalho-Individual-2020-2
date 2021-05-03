@@ -23,12 +23,7 @@ jobs:
     - stage: test
       script:
       - docker-compose run client yarn quasar test --unit jest
-      - docker-compose run --rm api sh -c "python manage.py test"
-
-addons:
-  apt:
-    packages:
-      - docker-ce
+      - docker-compose run api ./test_api.sh
 
 after_success:
   - codecov
