@@ -9,14 +9,10 @@ services:
 sudo: required
 
 env:
-  - DOCKER_COMPOSE_VERSION=1.4.2
   - CODECOV_TOKEN='4de5b3c5-f2c9-4806-8c06-fbf401288c48'
 
 before_install:
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
+  - pip3 install docker-compose
   - chmod +x api/tests.sh
 
 jobs:
@@ -27,8 +23,8 @@ jobs:
     - stage: test
       script:
       - docker-compose run client yarn quasar test --unit jest
-      - docker-compose run api /api/tests.sh
+      - docker-compose run --rm api sh -c "python manage.py test"
 
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+# after_success:
+#   - bash <(curl -s https://codecov.io/bash)
