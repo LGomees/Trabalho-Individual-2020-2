@@ -8,8 +8,8 @@ services:
 
 sudo: required
 
-env:
-  - CODECOV_TOKEN='4de5b3c5-f2c9-4806-8c06-fbf401288c48'
+# env:
+#   - CODECOV_TOKEN='4de5b3c5-f2c9-4806-8c06-fbf401288c48'
 
 before_install:
   - pip3 install docker-compose
