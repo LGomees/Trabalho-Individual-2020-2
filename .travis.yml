@@ -6,8 +6,6 @@ python:
 services: 
  - docker 
 
-sudo: required
-
 env:
   - DOCKER_COMPOSE_VERSION=1.4.2
   #  - CODECOV_TOKEN='4de5b3c5-f2c9-4806-8c06-fbf401288c48'
