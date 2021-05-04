@@ -1,4 +1,4 @@
-language: python
+language: generic
 
 services: 
  - docker 
@@ -13,13 +13,14 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
 
-# install: pip install codecov
+install: pip install codecov
 
-# jobs:
-#   include:
-#     - stage: build
+jobs:
+  include:
+    - stage: build
       script:
       - docker-compose up -d --build 
+      
     # - stage: test
     #   script:
     #   - docker-compose run client yarn quasar test --unit jest
