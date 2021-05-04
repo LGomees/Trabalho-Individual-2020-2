@@ -14,14 +14,15 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
   - chmod +x api/test_api.sh
   - chmod +x client/test_client.sh
+  - chmod +x /entrypoint.sh
 
 install: pip install codecov
 
 jobs:
-  include:
+  include:git 
     - stage: build
       script:
-      - docker-compose up -d --build 
+      - docker-compose up -d --build
       
     - stage: test
       script:
