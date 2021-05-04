@@ -3,6 +3,8 @@ language: generic
 services: 
  - docker 
 
+required:
+  - sudo
 env:
   - DOCKER_COMPOSE_VERSION=1.26.2
   - CODECOV_TOKEN='4de5b3c5-f2c9-4806-8c06-fbf401288c48'
