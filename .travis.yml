@@ -21,10 +21,10 @@ jobs:
       script:
       - docker-compose up -d --build 
       
-    # - stage: test
-    #   script:
-    #   - docker-compose run client yarn quasar test --unit jest
-    #   - docker-compose run api ./test_api.sh
+    - stage: test
+      script:
+      - docker-compose run client yarn quasar test --unit jest
+      - docker-compose run api ./test_api.sh
 
 after_success:
   - codecov
