@@ -3,8 +3,6 @@ language: generic
 services: 
  - docker 
 
-required:
-  - sudo
 env:
   - DOCKER_COMPOSE_VERSION=1.26.2
   - CODECOV_TOKEN='4de5b3c5-f2c9-4806-8c06-fbf401288c48'
@@ -26,7 +24,7 @@ jobs:
       
     - stage: test
       script:
-      - docker-compose run client quasar test --unit jest
+      - sudo docker-compose run client npx quasar test --unit jest
       - docker-compose run api ./test_api.sh
 
 after_success:
