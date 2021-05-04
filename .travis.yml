@@ -4,7 +4,7 @@ services:
  - docker 
 
 env:
-  - DOCKER_COMPOSE_VERSION=1.4.2
+  - DOCKER_COMPOSE_VERSION=1.29.0
   - CODECOV_TOKEN='4de5b3c5-f2c9-4806-8c06-fbf401288c48'
 
 before_install:
@@ -15,11 +15,11 @@ before_install:
 
 install: pip install codecov
 
-jobs:
-  include:
-    - stage: build
+# jobs:
+#   include:
+#     - stage: build
       script:
-      - docker-compose up -d
+      - docker-compose up -d --build 
     # - stage: test
     #   script:
     #   - docker-compose run client yarn quasar test --unit jest
