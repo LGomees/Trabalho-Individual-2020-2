@@ -24,7 +24,7 @@ jobs:
       
     - stage: test
       script:
-      - sudo docker-compose run client npx quasar test --unit jest
+      - sudo docker-compose run client yarn quasar test --unit jest
       - docker-compose run api ./test_api.sh
 
 after_success:
