@@ -12,12 +12,12 @@ WORKDIR /api
 ADD . /api/
 COPY requirements.txt manage.py api task /api/
 
-COPY test_api.sh /test_api.sh
-RUN chmod +x /test_api.sh
-
 RUN pip install -r requirements.txt
 RUN apt-get update
 
+RUN chmod +x /api/entrypoint.sh
+
+CMD ["/api/entrypoint.sh"]
 
 
 
