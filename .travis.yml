@@ -12,9 +12,8 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-  - chmod +x /entrypoint.sh
   - chmod +x api/test_api.sh
-  - chmod +x client/test_client.sh
+  #- chmod +x client/test_client.sh
 
 install: pip install codecov
 
@@ -26,7 +25,7 @@ jobs:
       
     - stage: test
       script:
-      - docker-compose run client ./test_client.sh
+      #- docker-compose run client ./test_client.sh
       - docker-compose run api ./test_api.sh
 
 after_success:
