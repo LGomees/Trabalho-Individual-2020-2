@@ -9,4 +9,4 @@ COPY yarn.lock ./
 RUN yarn install
 COPY . /client/
 
-CMD ["yarn", "quasar", "dev"]
+CMD ["quasar", "dev"]
