@@ -4,10 +4,8 @@ services:
         image: postgres:13
         container_name: postgres-container
         restart: always
-        environment:
-            POSTGRES_DB: myproject
-            POSTGRES_USER: myuser
-            POSTGRES_PASSWORD: password
+        env_file:
+            - db.env
         volumes: 
             - postgres_data:/var/lib/postgresql/data/
 
