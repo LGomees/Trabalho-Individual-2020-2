@@ -1,4 +1,4 @@
-language: generic
+language: python
 
 services: 
  - docker 
@@ -29,4 +29,4 @@ jobs:
       - docker-compose run api ./test_api.sh
 
 after_success:
-  - codecov
+  - bash <(curl -s https://codecov.io/bash)
