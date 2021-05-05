@@ -10,14 +10,11 @@ RUN mkdir /api
 WORKDIR /api
 
 ADD . /api/
-COPY requirements.txt manage.py api task /api/
+COPY requirements.txt manage.py api /api/
 
 RUN pip install -r requirements.txt
 RUN apt-get update
 
-RUN chmod +x /api/entrypoint.sh
-
-CMD ["/api/entrypoint.sh"]
-
+CMD ["sh", "-c", "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"]
 
 

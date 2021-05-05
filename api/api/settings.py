@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-sca_4i79@8^p7b4i3ggm!vz_&t7!+-omwh&8_q=lxbu%elp-o#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lgomees']
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -88,7 +88,11 @@ DATABASES = {
         'PORT': os.getenv('POSTGRES_PORT')
     }
 }
-
+print(os.getenv('POSTGRES_DB'))
+print(os.getenv('POSTGRES_USER'))
+print(os.getenv('POSTGRES_PASSWORD'))
+print(os.getenv('POSTGRES_HOST'))
+print(os.getenv('POSTGRES_PORT'))
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
