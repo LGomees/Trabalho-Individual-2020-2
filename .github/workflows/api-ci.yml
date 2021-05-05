@@ -18,6 +18,7 @@ jobs:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
+      - name: Iniciando
         uses: actions/checkout@v2
       - name: Verificação de Dependencias de cache
         uses: actions/cache@v2
@@ -53,3 +54,8 @@ jobs:
           POSTGRES_DB: github-actions
           POSTGRES_HOST: localhost
           POSTGRES_PORT: 5432
+      - name: Coveralls Rodando
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.github_token }}
+          parallel-finished: true
